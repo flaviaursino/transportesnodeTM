@@ -1,3 +1,5 @@
+// GITHUB transportesnodeTM
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -5,7 +7,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var nosotrosRouter = require('./routes/nosotros'); // nosotros.js
+var serviciosRouter = require('./routes/servicios');//servicios.js
+var galeriaRouter = require('./routes/galeria'); //galeria.js
+var novedadesRouter = require('./routes/novedades'); //novedades.js
+var contactoRouter = require('./routes/contacto'); // contacto.js
 
 var app = express();
 
@@ -20,7 +26,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/nosotros', nosotrosRouter);  // linea 8
+app.use('/servicios', serviciosRouter); // linea 9
+app.use('/galeria', galeriaRouter); //linea 10
+app.use('/novedades', novedadesRouter); //linea 11
+app.use('/contacto', contactoRouter); //linea 12
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
