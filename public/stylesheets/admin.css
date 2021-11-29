@@ -1,0 +1,10 @@
+.logo{
+    text-align: center;
+}
+
+.logo h1{
+    position: static;
+}
+.container{
+        margin: 100px auto;
+}
