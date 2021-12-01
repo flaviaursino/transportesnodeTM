@@ -26,7 +26,7 @@ router.post('/', async function (req,res,next)  {
    }
 
     var transport = nodemailer.createTransport({
-        host: process.env.SMTP_HOST, // escribir para que comunique con .env
+        host: process.env.SMTP_HOST, 
         port: process.env.SMTP_PORT,
         auth: {
             user: process.env.SMTP_USER,
