@@ -24,7 +24,7 @@ router.get('/agregar', function (req, res, next) {
     });
 });
 
-/*procesa o da funcionamiento al boton guardar */
+/*procesa o da funcionamiento al boton grabar */
 
 router.post('/agregar', async function (req, res, next)  {
     try {
@@ -50,6 +50,15 @@ router.post('/agregar', async function (req, res, next)  {
         }) // propiedades
     } // cierre catch
 }) // cierro router.post
+
+/*funcionamiento de eliminar*/
+
+router.get('/eliminar/:id', async (req,res,next) =>{
+    var id = req.params.id; // captura el id
+
+    await novedadesModel.deleteNovedadByID(id);
+    res.redirect('/admin/novedades');
+});
 
 
 module.exports = router;
