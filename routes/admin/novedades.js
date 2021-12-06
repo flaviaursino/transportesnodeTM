@@ -19,7 +19,7 @@ router.get('/', async function (req, res, next) {
 router.get('/agregar', function (req, res, next) {
 
     res.render('admin/agregar', {
-        layout: 'layout',
+        layout: 'admin/layout',
 
     });
 });
