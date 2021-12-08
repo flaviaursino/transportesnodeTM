@@ -60,5 +60,45 @@ router.get('/eliminar/:id', async (req,res,next) =>{
     res.redirect('/admin/novedades');
 });
 
+/*para que me muestre modificar (vista) cargado con una novedad*/
+
+router.get('/modificar/:id', async(req,res,next) =>{
+    var id= req.params.id;
+    var novedad = await novedadesModel.getNovedadesByID(id);
+    res.render('admin/modificar',{
+        layout:'admin/layout',
+        novedad
+
+    })
+})
+
+/*para UPDATE*/
+router.post('/modificar', async(req,res,next) =>{
+    //console.log(req.body)
+    try{
+        var obj={
+            titulo:req.body.titulo,
+            subtitulo:req.body.subtitulo,
+            cuerpo:req.body.cuerpo
+        }
+        // console.log(obj);
+        // console.log( req.body.id);
+
+
+        await novedadesModel.modificarNovedadById(obj, req.body.id);
+        res.redirect('/admin/novedades');
+
+    }catch (error){
+        console.log(error);
+        res.render('admin/modificar',{
+            layout:'admin/layout',
+            error:true,
+            message: 'NO se modifico la novedad'
+        })
+    }
+
+})
+
+
 
 module.exports = router;
